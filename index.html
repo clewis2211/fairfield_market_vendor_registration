@@ -585,11 +585,38 @@
                         </div>
                     </div>
 
-                    <!-- MANDATORY POLICIES SECTION -->
+                    <!-- TERMS AND CONDITIONS SECTION -->
+                    <h2 class="form-section-title">Terms & Conditions</h2>
+
+                    <div style="background: var(--bg-light); border: 2px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 24px; max-height: 400px; overflow-y: auto;">
+                        <div style="font-size: 13px; line-height: 1.8; color: var(--text);">
+                            <p style="margin-bottom: 14px; font-weight: 600;">Participation in The Fairfield Market: Flirting with Fairfield (the "Event") is subject to the following terms and conditions. By registering for and participating in the Event, you (the "Participant") agree to be bound by these terms.</p>
+
+                            <p style="margin-bottom: 12px;"><strong>1. Event Participation:</strong> All Participants must comply with all applicable laws, ordinances, and regulations of the City of Fairfield and the State of Alabama. The City of Fairfield reserves the right to restrict or deny participation to any business or individual at its sole discretion.</p>
+
+                            <p style="margin-bottom: 12px;"><strong>2. Space and Setup:</strong> Participants are responsible for their own setup, including tables, chairs, tents, and any other necessary equipment. All setups must be secure and may not obstruct public access or create a safety hazard. The City of Fairfield is not responsible for any loss or damage to Participant's property.</p>
+
+                            <p style="margin-bottom: 12px;"><strong>3. Pop-Up Permit and Licensing:</strong> All Participants are required to obtain a City of Fairfield pop-up permit at a fee of $38.50 in order to operate at the Event. This fee is non-refundable. The pop-up permit is valid solely for the duration of the Event and does not constitute an ongoing business license or permit to operate in the City of Fairfield. Businesses wishing to continue operating in Fairfield beyond the Event must obtain an official City of Fairfield business license.</p>
+
+                            <p style="margin-bottom: 12px;"><strong>4. Liability Waiver and Indemnification:</strong> In consideration of being permitted to participate in the Event, the Participant, on behalf of itself, its employees, and its agents, hereby releases, waives, discharges, and covenants not to sue the City of Fairfield, its officers, employees, and agents from any and all liability, claims, demands, actions, and causes of action whatsoever, direct or indirect, arising out of or related to any loss, damage, or injury, including death, that may be sustained by the Participant or any of the property belonging to the Participant, whether caused by the negligence of the City of Fairfield, or otherwise, while participating in the Event, or while in, on or upon the premises where the Event is being conducted.<br><br>Furthermore, the Participant agrees to indemnify and hold harmless the City of Fairfield from any and all claims, actions, suits, procedures, costs, expenses, damages, and liabilities, including attorney's fees, arising out of the Participant's involvement in the Event.</p>
+
+                            <p style="margin-bottom: 12px;"><strong>5. Food Vendors:</strong> Food truck operators are responsible for obtaining and displaying all necessary health permits and licenses as required by the Jefferson County Department of Health and the City of Fairfield.</p>
+
+                            <p style="margin-bottom: 0;"><strong>6. General Conduct:</strong> All Participants are expected to conduct themselves in a professional and courteous manner. Any behavior deemed inappropriate by Event organizers may result in immediate expulsion from the Event without refund.</p>
+                        </div>
+                    </div>
                     <h2 class="form-section-title">Mandatory Policies & Agreements</h2>
 
                     <div class="form-group">
                         <label style="margin-bottom: 16px;">Please confirm your understanding and agreement to the following mandatory policies: <span class="required">*</span></label>
+                        
+                        <div class="form-group" style="margin-bottom: 16px;">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="termsConditions" name="termsConditions" required>
+                                <label for="termsConditions" class="checkbox-label">I have read and agree to the Terms & Conditions above.</label>
+                            </div>
+                            <div class="error-message" id="termsConditionsError">You must agree to the Terms & Conditions</div>
+                        </div>
                         
                         <div class="form-group" style="margin-bottom: 16px;">
                             <div class="checkbox-group">
@@ -720,6 +747,12 @@
             }
 
             // Validate agreement checkboxes
+            const termsConditions = document.getElementById('termsConditions').checked;
+            if (!termsConditions) {
+                document.getElementById('termsConditionsError').classList.add('show');
+                isValid = false;
+            }
+
             const vendorAgreement = document.getElementById('vendorAgreement').checked;
             if (!vendorAgreement) {
                 document.getElementById('vendorAgreementError').classList.add('show');
